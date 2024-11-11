@@ -1,38 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+}
+
 .App {
+  height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+  width: 100%;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #ff6a00, #8e44ad, #3b82f6, #00bfae);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite, parallax 20s linear infinite;
+  transition: transform 0.3s ease-out;
+}
+
+.background.scrolled {
+  transform: scale(1.05);
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.header-title {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  animation: fadeInDown 2s ease-out;
+}
+
+.header-subtitle {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  animation: fadeInUp 2s ease-out;
+}
+
+.cta-btn {
+  background-color: #ff6a00;
+  color: white;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #ee0979;
+  transform: scale(1.05);
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 150px;
+  padding: 50px 20px;
+}
+
+.feature-card {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.demo {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+  margin-top: 150px;
+}
+
+.demo h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.demo p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.modal h2 {
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.modal p {
+  margin-bottom: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn-close {
+  background-color: #ff6a00;
   color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-close:hover {
+  background-color: #ee0979;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes parallax {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }
